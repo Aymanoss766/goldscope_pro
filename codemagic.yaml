@@ -1,0 +1,19 @@
+workflows:
+  build-android:
+    name: Build Android APK
+    max_build_duration: 30
+    environment:
+      flutter: stable
+      vars:
+        BUILD_DIR: build/app/outputs/flutter-apk/
+    scripts:
+      - name: Get Flutter packages
+        script: flutter pub get
+      - name: Build APK
+        script: flutter build apk --release
+    artifacts:
+      - $BUILD_DIR/app-release.apk
+    publishing:
+      email:
+        recipients:
+          - aymanoss766@gmail.com
